@@ -22,7 +22,7 @@ function cdgn {
     cdsc "GNU_Octave/$1"
 }
 
-function cdgs {
+function cdns {
     cdsc "nixos-scripts/$1"
 }
 
