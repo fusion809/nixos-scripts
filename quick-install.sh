@@ -1,4 +1,4 @@
-#!/bin/bash
+#!/run/current-system/sw/bin/bash
 
 # SCR
 SCR="$HOME/GitHub/mine/scripts"
@@ -62,6 +62,6 @@ if ! [[ -d $OZ/plugins/zsh-history-substring-search ]]; then
 fi
 
 # Change default login shell to Zsh
-chsh -s /bin/zsh
-sudo chsh -s /bin/zsh
-/bin/zsh
+chsh -s /run/current-system/sw/bin/zsh
+sudo chsh -s /run/current-system/sw/bin/zsh
+/run/current-system/sw/bin/zsh

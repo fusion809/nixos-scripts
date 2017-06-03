@@ -1,7 +1,7 @@
-if ! [[ -f /usr/bin/pastebinit ]]; then
-     emin pastebinit
+if `which pastebinit > /dev/null 2>&1`; then
+     sudo nix-env -i pastebinit
 fi
 
-if ! [[ -f /usr/bin/hub ]]; then
-     emin dev-vcs/hub
+if `which hub > /dev/null 2>&1`; then
+     sudo nix-env -i hub
 fi
