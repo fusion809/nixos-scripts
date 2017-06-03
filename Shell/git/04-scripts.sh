@@ -11,11 +11,11 @@ function cps {
     sudo mkdir -p $NS/usr/local/bin
 }
 
-function cdgs {
+function cdns {
     cd $NS
 }
 
 ## Update nixos-scripts GitHub repo
 function shup {
-    cps && cdgs && push "$1" && cd - && szsh
+    cps && cdns && push "$1" && cd - && szsh
 }
