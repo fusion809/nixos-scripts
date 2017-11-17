@@ -17,3 +17,7 @@ function nixi {
 function nixr {
     sudo nix-env -r "$@"
 }
+
+function nixrb {
+    sudo nixos-rebuild switch
+}
