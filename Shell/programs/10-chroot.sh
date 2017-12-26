@@ -41,3 +41,6 @@ function oroot {
     genroot /other
 }
 
+function aroot {
+    genroot /arch
+}
