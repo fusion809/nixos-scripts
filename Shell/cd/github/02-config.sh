@@ -5,3 +5,7 @@ function cdc {
 function cdci3 {
     cdc "i3-configs/$1"
 }
+
+function cdcn {
+    cdc "NixOS-configs/$1"
+}
