@@ -19,7 +19,7 @@ function nixr {
 }
 
 function nixrb {
-    nixos-rebuild switch
+    sudo nixos-rebuild switch
 }
 
 function nixs {
