@@ -19,6 +19,7 @@ function nixr {
 }
 
 function nixrb {
+    sudo nix-channel --update
     sudo nixos-rebuild switch
 }
 
