@@ -15,7 +15,7 @@ function nixi {
 }
 
 function nixr {
-    nix-env -r "$@"
+    nix-env --uninstall "$@"
 }
 
 function nixrb {

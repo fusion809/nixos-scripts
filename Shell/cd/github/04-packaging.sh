@@ -1,3 +1,7 @@
+function cdnp {
+    cdgo "nixpkgs/$1"
+}
+
 function cdpk {
     cdgm "packaging/$1"
 }

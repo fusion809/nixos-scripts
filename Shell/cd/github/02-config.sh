@@ -9,3 +9,5 @@ function cdci3 {
 function cdcn {
     cdc "NixOS-configs/$1"
 }
+
+alias cdnc=cdcn
