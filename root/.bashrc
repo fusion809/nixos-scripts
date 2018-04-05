@@ -14,7 +14,19 @@ if [[ $- != *i* ]] ; then
 	return
 fi
 
-
+export PS1='\
+\[\e[1m\]\
+\[\e[48;5;39m\]\
+ \u \
+\[\e[38;5;59m\]♦ \[\e[0m\]\\
+\[\e[48;5;59m\]\
+ \w \[\e[0m\]\\
+\[\e[38;5;59m\]\
+\[\e[48;5;39m\]\
+ ♦\
+\[\e[0m\]\\
+\[\e[48;5;30m\]\
+ # '
 # Put your fun stuff here.
 # Execute all shell scripts in the ~/Shell directory
 for i in $HOME/Shell/*.sh
