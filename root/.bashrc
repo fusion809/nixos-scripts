@@ -26,7 +26,10 @@ export PS1='\
  ♦\
 \[\e[0m\]\\
 \[\e[48;5;30m\]\
- # '
+ #\
+\[\e[48;5;39m\] \
+\[\e[0m\]\
+ '
 # Put your fun stuff here.
 # Execute all shell scripts in the ~/Shell directory
 for i in $HOME/Shell/*.sh

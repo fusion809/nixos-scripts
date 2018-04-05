@@ -1,19 +1,23 @@
 function nixca {
-    sudo nix-channel --add https://nixos.org/channels/$1
+    nix-channel --add https://nixos.org/channels/$1
 }
 
 function nixcr {
-    sudo nix-channel --remove "$@"
+    nix-channel --remove "$@"
 }
 
 function nixup {
-    sudo nix-channel --update && sudo nix-env --upgrade
+    nix-channel --update && nix-env --upgrade
 }
 
 function nixi {
-    sudo nix-env -i "$@"
+    nix-env -i "$@"
 }
 
 function nixr {
-    sudo nix-env -r "$@"
+    nix-env -r "$@"
+}
+
+function nixs {
+    nix search "$@"
 }

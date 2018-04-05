@@ -24,5 +24,5 @@ function nixrb {
 }
 
 function nixs {
-    nix-env -qa "$@"
+    nix search "$@"
 }
