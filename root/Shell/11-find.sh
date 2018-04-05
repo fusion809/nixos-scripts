@@ -7,3 +7,4 @@ function comsearch {
     done
 }
 
+alias comfind=comsearch
