@@ -21,6 +21,7 @@ function nixr {
 function nixrb {
     sudo nix-channel --update
     sudo nixos-rebuild switch
+    sudo nix-collect-garbage -d
 }
 
 function nixs {
