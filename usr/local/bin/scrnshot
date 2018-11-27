@@ -1,0 +1,37 @@
+#!/run/current-system/sw/bin/bash
+set -e
+function calc {
+    TZ="Australia/Brisbane" date +"%$1"
+}
+
+S=$(calc S)
+M=$(calc M)
+H=$(calc H)
+D=$(calc d)
+m=$(calc m)
+Y=$(calc Y)
+
+OS=$(grep "^NAME" < /etc/os-release | cut -d '=' -f 2 | cut -d '"' -f 2 | sed 's/ /_/g' | head -n 1)
+VERSION=$(grep "^VERSION_ID" < /etc/os-release | cut -d '=' -f 2 | cut -d '"' -f 2)
+
+if ! command -v import > /dev/null 2>&1; then
+	if command -v zenity > /dev/null 2>&1; then
+		zenity --error --text="import command not found, please command -v if ImageMagick is installed, if not, install it, otherwise add the import command to your system PATH!" --title="Error!"
+	fi
+fi
+
+if ps ax | grep "i3" > /dev/null 2>&1; then
+	XDG_SESSION_DESKTOP=i3
+fi
+
+if [[ -n "$1" ]]; then
+	sleep "$1"
+fi
+
+if [[ -n $VERSION ]]; then
+	mkdir -p "/home/fusion809/Pictures/Screenshots/${XDG_SESSION_DESKTOP}/${OS}-${VERSION}"
+	import -window root -frame -silent "/home/fusion809/Pictures/Screenshots/${XDG_SESSION_DESKTOP}/${OS}-${VERSION}/Screenshot_${Y}${m}${D}_${H}${M}${S}.png" || zenity --error --text="Screenshot command:\n<span bgcolor='#CCCCCC'><tt>import -window root -frame -silent \"/home/fusion809/Pictures/Screenshots/${XDG_SESSION_DESKTOP}/${OS}-${VERSION}/Screenshot_${Y}${m}${D}_${H}${M}${S}.png\"</tt></span>" --width=1000 
+else
+	mkdir -p "/home/fusion809/Pictures/Screenshots/${XDG_SESSION_DESKTOP}/${OS}"
+	import -window root -frame -silent "/home/fusion809/Pictures/Screenshots/${XDG_SESSION_DESKTOP}/${OS}/Screenshot_${Y}${m}${D}_${H}${M}${S}.png" || zenity --error --text="Screenshot command:\n<span bgcolor='#CCCCCC'><tt>import -window root -frame -silent \"/home/fusion809/Pictures/Screenshots/${XDG_SESSION_DESKTOP}/${OS}/Screenshot_${Y}${m}${D}_${H}${M}${S}.png\"</tt></span>" --width=1000 
+fi

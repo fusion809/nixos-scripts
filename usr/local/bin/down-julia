@@ -1,0 +1,21 @@
+#!/run/current-system/sw/bin/bash
+cdp targz
+if command -v wget > /dev/null 2>&1 ; then
+	URL_STABLE=$(wget -cqO- https://julialang.org/downloads/ | grep "linux-x86_64.tar.gz" | head -n 1 | cut -d '"' -f 4)
+	wget -c ${URL_STABLE}
+	FILENAME=$(echo ${URL_STABLE} | cut -d '/' -f 8)
+elif command -v curl > /dev/null 2>&1 ; then
+	URL_STABLE=$(curl -sL https://julialang.org/downloads/ | grep "linux-x86_64.tar.gz" | head -n 1 | cut -d '"' -f 4)
+	FILENAME=$(echo ${URL_STABLE} | cut -d '/' -f 8)
+	curl -L ${URL_STABLE} -O ${FILENAME}
+fi
+
+tar xf ${FILENAME}
+
+VERSION=$(echo ${FILENAME} | cut -d '-' -f 2)
+
+VERSION_SCRIPT=$(grep PATH < $HOME/Shell/common-scripts/variables/14-julia.sh | cut -d '/' -f 4 | cut -d '-' -f 2)
+
+if ! [[ $VERSION == ${VERSION_SCRIPT} ]]; then
+	sed -i -e "s|$VERSION_SCRIPT|$VERSION|g" $HOME/Shell/common-scripts/variables/14-julia.sh
+fi

@@ -1,0 +1,10 @@
+#!/run/current-system/sw/bin/bash
+if command -v tor-browser > /dev/null 2>&1 ; then
+	tor-browser
+elif [[ -f $HOME/.nix-profile/bin/tor-browser ]]; then
+	$HOME/.nix-profile/bin/tor-browser
+elif command -v torbrowser-launcher > /dev/null 2>&1 ; then
+	torbrowser-launcher
+else
+	zenity --error --text="Tor Browser isn't in user $PATH as either tor-browser or torbrowser-launcher and doesn't appear to be installed via Nix; this message is coming from /usr/local/bin/torbrowser." --title="Error!"
+fi

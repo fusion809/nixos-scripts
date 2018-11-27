@@ -1,0 +1,6 @@
+#!/run/current-system/sw/bin/bash
+if command -v curl > /dev/null 2>&1 ; then
+	curl -Ss 'https://wttr.in/Townsville?0&T&Q' | cut -c 16- | head -2 | xargs echo
+elif command -v wget > /dev/null 2>&1 ; then
+	wget -cqO- 'https://wttr.in/Townsville?0&T&Q' | cut -c 16- | head -2 | xargs echo
+fi

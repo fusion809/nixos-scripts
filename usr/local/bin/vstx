@@ -1,0 +1,25 @@
+#!/run/current-system/sw/bin/bash
+if command -v code > /dev/null 2>&1 ; then
+	export CODE=$(command -v code)
+elif command -v vscode > /dev/null 2>&1 ; then
+	export CODE=$(command -v vscode)
+elif command -v visual-studio-code > /dev/null 2>&1 ; then
+	export CODE=$(command -v visual-studio-code)
+elif command -v code-oss > /dev/null 2>&1 ; then
+	export CODE=$(command -v code-oss)
+elif flatpak list | grep "com.visualstudio.code" > /dev/null 2>&1 ; then
+	export CODE=$(flatpak run com.visualstudio.code)
+elif command -v zenity > /dev/null 2>&1 ; then
+	zenity --error --text="Visual Studio Code has not been found." --title="Error!"
+else
+	printf "Visual Studio Code has not been found.\n"
+fi
+
+if [[ -d /data/Documents/Text-files ]]; then
+	$CODE /data/Documents/Text-files/$1
+elif [[ -d /data/Documents/"Text files" ]]; then
+	$CODE /data/Documents/"Text files/$1"
+else
+	mkdir /data/Documents/"Text-files"
+	$CODE /data/Documents/"Text-files/$1"
+fi

@@ -1,0 +1,5 @@
+#!/run/current-system/sw/bin/bash
+export DIR=/home/fusion809/Documents/CodeLite/CPP-Math-Projects
+pushd $DIR
+/usr/bin/gvim
+popd

@@ -1,0 +1,8 @@
+#!/run/current-system/sw/bin/bash
+function git-branch {
+	git rev-parse --abbrev-ref HEAD
+}
+export GHUBO=$HOME/GitHub/others/"$@"
+cd $GHUBO/"$@"
+git pull origin $(git-branch) || printf "git pull origin $(git-branch) failed for $i\n" && exit
+cd $GHUBO

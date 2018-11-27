@@ -1,0 +1,14 @@
+#!/run/current-system/sw/bin/bash
+if [[ -d /boot/grub ]]; then
+    sudo grub-mkconfig -o /boot/grub/grub.cfg
+elif [[ -d /boot/grub2 ]]; then
+    if [[ -f /boot/grub2/grub.cfg ]]; then
+         if command -v grub-mkconfig > /dev/null 2>&1; then
+              sudo grub-mkconfig -o /boot/grub2/grub.cfg
+         elif command -v grub2-mkconfig > /dev/null 2>&1; then
+              sudo grub2-mkconfig -o /boot/grub2/grub.cfg
+         fi
+    elif [[ -f /boot/grub2/grub2.cfg ]]; then
+         sudo grub2-mkconfig -o /boot/grub2/grub2.cfg
+    fi
+fi

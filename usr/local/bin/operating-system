@@ -1,0 +1,13 @@
+#!/run/current-system/sw/bin/bash
+OSNAME=$(cat /etc/os-release | grep "^NAME" | cut -d '"' -f 2 | sed 's/NAME=//g')
+if grep "^REDHAT_SUPPORT_PRODUCT_VERSION=rawhide" < /etc/os-release > /dev/null 2>&1 ; then
+	OSVER="Rawhide"
+	OPSYS="${OSNAME} ${OSVER}"
+elif grep "^VERSION_ID" < /etc/os-release > /dev/null 2>&1; then
+	OSVER=$(cat /etc/os-release | grep "^VERSION_ID" | cut -d '"' -f 2 | sed 's/VERSION_ID=//g')
+	OPSYS="${OSNAME} ${OSVER}"
+else
+	OPSYS=$OSNAME
+fi
+
+printf "$OPSYS\n"
