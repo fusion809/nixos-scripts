@@ -19,7 +19,7 @@ ZSH_DISABLE_COMPFIX=true
 
 # Uncomment the following line to enable command auto-correction.
 # ENABLE_CORRECTION="true"
-ZSH_THEME="hcompact"
+ZSH_THEME="hfulldate"
 
 # Uncomment the following line to display red dots whilst waiting for completion.
 # COMPLETION_WAITING_DOTS="true"
@@ -41,7 +41,7 @@ ZSH_THEME="hcompact"
 # Custom plugins may be added to ~/.oh-my-zsh/custom/plugins/
 # Example format: plugins=(rails git textmate ruby lighthouse)
 # Add wisely, as too many plugins slow down shell startup.
-plugins=(git zsh-syntax-highlighting safe-paste zsh-completions)
+plugins=(vi-mode git zsh-syntax-highlighting safe-paste zsh-completions)
 autoload -U compinit && compinit
 source $ZSH/plugins/zsh-history-substring-search/zsh-history-substring-search.zsh
 
