@@ -20,7 +20,7 @@ if ! command -v import > /dev/null 2>&1; then
 	fi
 fi
 
-if ps ax | grep "i3" > /dev/null 2>&1; then
+if ps ax | grep "i3pystatus\|i3status\|i3bar" | grep -v grep > /dev/null 2>&1; then
 	XDG_SESSION_DESKTOP=i3
 fi
 
