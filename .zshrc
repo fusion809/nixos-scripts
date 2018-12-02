@@ -109,3 +109,7 @@ for i in $HOME/Shell/*.sh
 do
   . "$i"
 done
+
+function launch-game {
+	LD_LIBRARY_PATH=$LD_LIBRARY_PATH:/nix/store/jlif2032zlf3r79a3fdrmgp3cqb16fqn-SDL2-2.0.9/lib:$HOME/.nix-profile/lib:/nix/store/1ql0i8bc65xaifzil6vhbl5vl1ydkvjf-lua-5.1.5/lib ./launch-game.sh "$@"
+}
