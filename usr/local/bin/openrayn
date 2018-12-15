@@ -1,0 +1,22 @@
+#!/run/current-system/sw/bin/bash
+#while ! ping -q -w 1 -c 1 $(ip r | grep default | cut -d ' ' -f 3) > /dev/null
+#do
+#    sleep 60
+#done
+
+# OpenRA Generals Alpha latest commit available
+cd /home/fusion809/GitHub/others/yr || return
+git stash -q || return
+if ! command -v git > /dev/null 2>&1; then
+    printf "git is not detected, either install it or if already installed at it to the system PATH.\n" && return
+fi
+git pull origin master -q || ( printf "ORAYRErr\n" && return )
+orlv=$(git rev-list --branches master --count)
+# OpenRA latest packaged version
+orpv=$(grep " version = " < $NIXPKGS/pkgs/games/openra-yr/default.nix | cut -d '"' -f 2)
+
+if [[ $orpv == $orlv ]]; then
+    printf "ORAYR \n"
+else
+    printf "ORAYR${orlv}\n"
+fi

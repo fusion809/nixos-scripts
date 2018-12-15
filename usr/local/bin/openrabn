@@ -1,0 +1,25 @@
+#!/run/current-system/sw/bin/bash
+#while ! ping -q -w 1 -c 1 $(ip r | grep default | cut -d ' ' -f 3) > /dev/null
+#do
+#    sleep 60
+#done
+
+# OpenRA latest commit on the bleed branch available
+cd /home/fusion809/GitHub/others/OpenRA || return
+git stash -q || return
+# update repository
+if command -v git > /dev/null 2>&1; then
+    git pull origin bleed -q || ( printf "ORABErr\n" && return )
+else
+    printf "git isn't found. Please install it, or if it is installed edit your system PATH." && return
+fi
+
+orlv=$(git rev-list --branches bleed --count)
+# OpenRA latest packaged version
+orpv=$(grep "Version:" < /home/fusion809/OBS/home:fusion809/openra-bleed/openra-bleed.spec | sed 's/Version:\s*//g')
+
+if [[ "$orpv" == "$orlv" ]]; then
+    printf "%s\n" "ORAB "
+else
+    printf "%s\n" "ORAB${orlv}"
+fi

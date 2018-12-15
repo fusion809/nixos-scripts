@@ -1,0 +1,15 @@
+#!/run/current-system/sw/bin/bash
+#while ! ping -q -w 1 -c 1 $(ip r | grep default | cut -d ' ' -f 3) > /dev/null
+#do
+#    sleep 60
+#done
+
+pkgver=$(curl -sL http://www.sublimetext.com/3 | grep "dmg" | sed 's/.*Build //g' | sed 's/.dmg.*//g')
+cd /data/GitHub/mine/packaging/fusion809-overlay/app-editors/sublime-text
+pkgpver=$(ls -ld * | tail -n 1 | sed 's/[a-zA-Z0-9: .]*sublime-text//g' | cut -d '-' -f 8 | sed 's/.ebuild//g')
+
+if ! [[ $pkgver == $pkgpver ]]; then
+    printf "Subl$pkgver\n"
+else
+    printf "Subl\n"
+fi

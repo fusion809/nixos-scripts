@@ -1,0 +1,21 @@
+#!/run/current-system/sw/bin/bash
+#while ! ping -q -w 1 -c 1 $(ip r | grep default | cut -d ' ' -f 3) > /dev/null
+#do
+#    sleep 60
+#done
+
+if command -v curl > /dev/null 2>&1; then
+    pkgver=$(curl -sL https://www.activestate.com/komodo-ide/downloads/edit | grep "linux-x86_64" | cut -d '/' -f 12)
+elif command -v wget > /dev/null 2>&1; then
+    pkgver=$(wget -cqO- https://www.activestate.com/komodo-ide/downloads/edit | grep "linux-x86_64" | cut -d '/' -f 12)
+else
+    printf "Neither cURL nor wget are detected, so please either install one or if already installed add them to your system PATH.\n"
+fi
+
+pkgpver=$(cat /home/fusion809/OBS/home:fusion809/komodo-edit/komodo-edit.spec | grep "Version:" | cut -d ':' -f 2 | sed 's/\s*//g')
+
+if [[ $pkgver == $pkgpver ]]; then
+    printf "Kom\n"
+else
+    printf "Kom${pkgver}\n"
+fi

@@ -1,0 +1,24 @@
+#!/run/current-system/sw/bin/bash
+#while ! ping -q -w 1 -c 1 $(ip r | grep default | cut -d ' ' -f 3) > /dev/null
+#do
+#    sleep 60
+#done
+
+if command -v curl > /dev/null 2>&1; then
+    MAJOR=$(curl -sL https://sourceforge.net/projects/jmol/files/Jmol/ | grep "Version%20[0-9]" | head -n 1 | cut -d '/' -f 6 | sed 's/Version%20//g')
+    pkgver=$(wget -cqO- "https://sourceforge.net/projects/jmol/files/Jmol/Version%20${MAJOR}" | grep "Jmol%20${MAJOR}" | head -n 1 | cut -d '/' -f 7 | sed 's/Jmol%20//g')
+elif command -v wget > /dev/null 2>&1; then
+    MAJOR=$(wget -cqO- https://sourceforge.net/projects/jmol/files/Jmol/ | | grep "Version%20[0-9]" | head -n 1 | cut -d '/' -f 6 | sed 's/Version%20//g') 
+    pkgver=$(wget -cqO- "https://sourceforge.net/projects/jmol/files/Jmol/Version%20${MAJOR}" | grep "Jmol%20${MAJOR}" | head -  n 1 | cut -d '/' -f 7 | sed 's/Jmol%20//g')
+else
+    printf "Neither cURL nor wget have been detected, please install them or, if already installed, add them to the system PATH.\n"
+fi
+
+cd /home/fusion809/OBS/home:fusion809/jmol
+pkgsp=$(cat jmol.spec | grep "Version:" | cut -d ':' -f 2 | sed 's/\s*//g')
+
+if ! [[ $pkgver == $pkgsp ]]; then
+    printf "Jmol$pkgver\n"
+else
+    printf "Jmol\n"
+fi

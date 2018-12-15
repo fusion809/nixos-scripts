@@ -1,0 +1,24 @@
+#!/run/current-system/sw/bin/bash
+#while ! ping -q -w 1 -c 1 $(ip r | grep default | cut -d ' ' -f 3) > /dev/null
+#do
+#    sleep 60
+#done
+
+# Avogadro 2 latest version available
+cd /home/fusion809/GitHub/others/spglib || return
+git stash -q || return
+if command -v git > /dev/null 2>&1; then
+    git pull origin master -q || ( printf "spglibErr\n" && return )
+    orlv=$(git rev-list --branches master --count)
+else
+    printf "git has not been detected in the system PATH. Please either install it, if it is not already installed, or add it to the system PATH if it already is.\n"
+fi
+
+# Avogadro 2 latest packaged version
+orpv=$(cat /home/fusion809/OBS/home:fusion809/spglib/spglib.spec | grep "Version:" | sed 's/Version:\s*//g')
+
+if [[ $orpv == $orlv ]]; then
+    printf "spg \n"
+else
+    printf "spg${orlv}\n"
+fi

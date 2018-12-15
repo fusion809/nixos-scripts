@@ -1,0 +1,23 @@
+#!/run/current-system/sw/bin/bash
+#while ! ping -q -w 1 -c 1 $(ip r | grep default | cut -d ' ' -f 3) > /dev/null
+#do
+#    sleep 60
+#done
+
+if command -v curl > /dev/null 2>&1; then
+    pkgver=$(curl -sL https://github.com/openSUSE/obs-service-download_files/releases | grep "\.tar\.gz" | head -n 1 | cut -d '"' -f 4 | cut -d '/' -f 5 | sed 's/\.tar\.gz//g')
+elif command -v wget > /dev/null 2>&1; then
+    pkgver=$(wget -cqO- https://github.com/openSUSE/obs-service-download_files/releases | grep "\.tar\.gz" | head -n 1 | cut -d '"' -f 4 | cut -d '/' -f 5 | sed 's/\.tar\.gz//g')
+else
+    printf "Neither cURL nor wget has been detected, please install them if not installed or add them to the system PATH if they already are.\n" && return
+fi
+
+cd /home/fusion809/OBS/home:fusion809/obs-service-download_files
+pkgpver=$(sed -n 's/pkgver=//p' PKGBUILD)
+
+if ! ( [ $pkgpver == $pkgver ] ); then
+    printf "OBD$pkgver\n"
+else
+    printf "OBD\n"
+fi
+

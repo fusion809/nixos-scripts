@@ -1,0 +1,21 @@
+#!/run/current-system/sw/bin/bash
+#while ! ping -q -w 1 -c 1 $(ip r | grep default | cut -d ' ' -f 3) > /dev/null
+#do
+#    sleep 60
+#done
+
+if command -v curl > /dev/null 2>&1; then
+    pkgver=$(curl -sL https://github.com/openSUSE/osc/releases | grep "\.tar\.gz" | head -n 1 | cut -d '"' -f 4 | cut -d '/' -f 5 | sed 's/\.tar\.gz//g')
+elif command -v wget > /dev/null 2>&1; then
+    pkgver=$(wget -cqO- https://github.com/openSUSE/osc/releases | grep "\.tar\.gz" | head -n 1 | cut -d '"' -f 4 | cut -d '/' -f 5 | sed 's/\.tar\.gz//g')
+else
+    printf "Neither cURL nor wget are detected, please install them, or if installed add to system PATH.\n" && return
+fi    
+cd /home/fusion809/OBS/home:fusion809/osc
+pkgpver=$(sed -n 's/pkgver=//p' PKGBUILD)
+
+if ! ( [ $pkgpver == $pkgver ] ); then
+    printf "osc$pkgver\n"
+else
+    printf "osc\n"
+fi

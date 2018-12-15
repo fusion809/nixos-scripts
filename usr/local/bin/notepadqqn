@@ -1,0 +1,15 @@
+#!/run/current-system/sw/bin/bash
+#while ! ping -q -w 1 -c 1 $(ip r | grep default | cut -d ' ' -f 3) > /dev/null
+#do
+#    sleep 60
+#done
+
+cd /home/fusion809/OBS/home:fusion809/notepadqq || return
+pkgver=$(wget -q https://github.com/notepadqq/notepadqq/releases -O - | grep -v "beta" | grep "\.tar\.gz" | head -n 1 | cut -d '/' -f 5 | cut -d '"' -f 1 | sed 's/v//g' | sed 's/\.tar\.gz//g')
+pkgpver=$(cat _service | grep gz | cut -d '/' -f 4 | head -n 1 | sed 's/v//g' | sed 's/\.tar\.gz//g' | cut -d '<' -f 1)
+
+if [[ $pkgver == $pkgpver ]]; then
+     printf "NQ\n"
+else
+     printf "NQ$pkgver\n"
+fi

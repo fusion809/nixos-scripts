@@ -1,0 +1,25 @@
+#!/run/current-system/sw/bin/bash
+#while ! ping -q -w 1 -c 1 $(ip r | grep default | cut -d ' ' -f 3) > /dev/null
+#do
+#    sleep 60
+#done
+
+# OpenRA RAClassic latest commit available
+cd /home/fusion809/GitHub/others/raclassic || return
+git stash -q || return
+
+if command -v git > /dev/null 2>&1; then
+    git pull origin master -q || ( printf "ORACErr\n" && return )
+    orlv=$(git rev-list --branches master --count)
+else
+    printf "git is not detected, either install it or if already installed at it to the system PATH.\n" && return
+fi
+
+# Latest packaged version
+orpv=$(grep " version = " < $NIXPKGS/pkgs/games/openra-raclassic/default.nix | cut -d '"' -f 2)
+
+if [[ $orpv == $orlv ]]; then
+    printf "ORAC \n"
+else
+    printf "ORAC${orlv}\n"
+fi

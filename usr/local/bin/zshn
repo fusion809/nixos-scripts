@@ -1,0 +1,14 @@
+#!/run/current-system/sw/bin/bash
+#while ! ping -q -w 1 -c 1 $(ip r | grep default | cut -d ' ' -f 3) > /dev/null
+#do
+#    sleep 60
+#done
+
+pkgver=$(curl -sL http://www.zsh.org/pub/ | grep ".*[0-9].*tar.[a-z]z" | tail -n 1 | sed 's/.*"zsh-//g' | sed 's/.tar.[a-z]z[0-9]*.*//g')
+pkgpver=$(cat /home/fusion809/OBS/home:fusion809/zsh/zsh.spec | grep Version | cut -d ' ' -f 2)
+
+if [[ $pkgver == $pkgpver ]]; then
+    printf "Zsh \n"
+else
+    printf "Zsh$pkgver\n"
+fi

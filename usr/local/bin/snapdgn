@@ -1,0 +1,14 @@
+#!/run/current-system/sw/bin/bash
+#while ! ping -q -w 1 -c 1 $(ip r | grep default | cut -d ' ' -f 3) > /dev/null
+#do
+#    sleep 60
+#done
+
+pkgver=$(wget -cqO- https://github.com/snapcore/snapd-glib/releases | grep "tar\.gz" | cut -d '/' -f 5 | cut -d '"' -f 1 | sed 's/\.tar\.gz//g' | head -n 1)
+pkgpver=$(cat /home/fusion809/OBS/home:fusion809/snapd-glib/snapd-glib.spec | grep "Version:" | cut -d ':' -f 2 | sed 's/\s*//g')
+
+if [[ $pkgver == $pkgpver ]]; then
+    printf "spdg\n"
+else
+    printf "spdg${pkgver}\n"
+fi

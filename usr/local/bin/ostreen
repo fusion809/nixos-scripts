@@ -1,0 +1,21 @@
+#!/run/current-system/sw/bin/bash
+#while ! ping -q -w 1 -c 1 $(ip r | grep default | cut -d ' ' -f 3) > /dev/null
+#do
+#    sleep 60
+#done
+
+if command -v wget > /dev/null 2>&1; then
+    pkgver=$(wget -cqO- https://github.com/ostreedev/ostree/releases | grep "tar\.xz" | cut -d '/' -f 6 | sed "s|v||g" | head -n 1)
+elif command -v curl > /dev/null 2>&1; then
+    pkgver=$(curl -sL https://github.com/ostreedev/ostree/releases | grep "tar\.xz" | cut -d '/' -f 6 | sed "s|v||g" | head -n 1)
+else
+    printf "Neither cURL nor wget are detected, please install them, or if they are already installed please add them to the system PATH.\n" && return
+fi
+
+pkgpver=$(cat /home/fusion809/OBS/home:fusion809/libostree/libostree.spec | grep "Version:" | cut -d ':' -f 2 | sed 's/\s*//g')
+
+if [[ $pkgver == $pkgpver ]]; then
+    printf "OST\n"
+else
+    printf "OST${pkgver}\n"
+fi

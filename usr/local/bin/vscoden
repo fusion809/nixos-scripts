@@ -1,0 +1,24 @@
+#!/run/current-system/sw/bin/bash
+#while ! ping -q -w 1 -c 1 $(ip r | grep default | cut -d ' ' -f 3) > /dev/null
+#do
+#    sleep 60
+#done
+
+URL="https://packages.microsoft.com/repos/vscode/pool/main/c/code"
+if command -v curl > /dev/null 2>&1; then
+    revn=$(curl -sL $URL | grep "deb" | cut -d '-' -f 3 | cut -d '_' -f 1 | sort -n | tail -n 1)
+    ver=$(curl -sL $URL | grep "$revn" | cut -d '-' -f 1 | cut -d '_' -f 2)
+elif command -v wget > /dev/null 2>&1; then
+    revn=$(wget -cqO- $URL | grep "deb" | cut -d '-' -f 3 | cut -d '_' -f 1 | sort -n | tail -n 1)
+    over=$(wget -cqO- $URL | grep "$revn" | cut -d '-' -f 1 | cut -d '_' -f 2)
+else
+    printf "Neither cURL nor wget has been detected, please install them if not installed or add them to the system PATH if they already are.\n"
+fi
+
+verl=$(ls /data/GitHub/mine/packaging/fusion809-overlay/app-editors/visual-studio-code/*.ebuild | sed 's/.*\/visual-studio-code-//g' | sed 's/\.ebuild//g')
+
+if [[ $verl == $ver ]]; then
+    printf "VSC\n"
+else
+    printf "VSC$ver\n"
+fi

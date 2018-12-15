@@ -1,0 +1,21 @@
+#!/run/current-system/sw/bin/bash
+#while ! ping -q -w 1 -c 1 $(ip r | grep default | cut -d ' ' -f 3) > /dev/null
+#do
+#    sleep 60
+#done
+
+if command -v wget > /dev/null 2>&1; then
+    pkgver=$(wget -cqO- https://github.com/flatpak/flatpak/releases | grep "tar\.gz" | cut -d '/' -f 5 | cut -d '"' -f 1 | sed 's/\.tar\.gz//g' | head -n 1)
+elif command -v curl > /dev/null 2>&1; then
+    pkgver=$(curl -sL https://github.com/flatpak/flatpak/releases | grep "tar\.gz" | cut -d '/' -f 5 | cut -d '"' -f 1 | sed 's/\.tar\.gz//g' | head -n 1)
+else
+    printf "%s\n" "Neither cURL nor wget are detected, please install them, or if they are already installed please add them to the system PATH." && return
+fi
+
+pkgpver=$(grep "Version:" < /home/fusion809/OBS/home:fusion809/flatpak/flatpak.spec | cut -d ':' -f 2 | sed 's/\s*//g')
+
+if [[ $pkgver == $pkgpver ]]; then
+    printf "%s\n" "FP"
+else
+    printf "%s\n" "FP${pkgver}"
+fi
