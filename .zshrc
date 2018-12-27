@@ -13,6 +13,10 @@ ZSH_THEME="hfulldate"
 # Uncomment the following line to use case-sensitive completion.
 CASE_SENSITIVE="true"
 
+# Stop globbing per 
+# https://superuser.com/questions/982110/how-can-i-disable-globbing-for-url-arguments-in-zsh/982399
+setopt NO_NOMATCH
+
 # Uncomment the following line to use hyphen-insensitive completion. Case
 # sensitive completion must be off. _ and - will be interchangeable.
 HYPHEN_INSENSITIVE="false"
