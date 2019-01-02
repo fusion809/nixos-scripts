@@ -1,39 +1,32 @@
 #!/run/current-system/sw/bin/bash
-if ! [[ -d /arch/bin ]]; then
-	sudo mount /dev/sda6 /arch
-	sudo mount /dev/sdb1 /arch/data
-	!        if [[ -f /proc/config.gz ]]
-        then
-                if ! [[ -f /arch/proc/config.gz ]]
-                then
-                        sudo mount -t proc /proc /arch/proc
-                fi
-        elif [[ -f /proc/cgroups ]]
-        then
-                if ! [[ -f /arch/proc/cgroups ]]
-                then
-                        sudo mount -t proc /proc /arch/proc
-                fi
-        elif [[ -f /proc/devices ]]
-        then
-                if ! [[ -f /arch/proc/devices ]]
-                then
-                        sudo mount -t proc /proc /arch/proc
-                fi
-        fi
-        if ! [[ -e /arch/dev/sda ]]
-        then
-                sudo mount --rbind /dev /arch/dev
-                sudo mount --make-rslave /arch/dev
-        fi
-        if ! [[ -d /arch/sys/kernel ]]
-        then
-                sudo mount --rbind /sys /arch/sys
-                sudo mount --make-rslave /arch/sys
-        fi
-        if ! [[ -f /arch/etc/resolv.conf ]]
-        then
-                sudo cp -L /etc/resolv.conf /arch/etc
-        fi
-fi 
-sudo chroot /arch /usr/local/bin/check-updates
+0adn; 
+avogadron;
+avogadroln;
+flatn;
+jmoln; 
+komodon;
+libmsymn;
+molen;
+notepadqqn;
+obsa; 
+openbabeln;
+openran; 
+openrabn; 
+openracn;
+openracan;
+openrad2n;
+openradn;
+openragn;
+openra2n;
+openrauran;
+openramwn;
+openrayn;
+oscn; 
+openraspn;
+snapdn;
+snapdgn;
+spglibn;
+subln;
+vimn; 
+vscoden; 
+zshn

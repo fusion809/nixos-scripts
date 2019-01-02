@@ -1,8 +1,8 @@
 #!/run/current-system/sw/bin/bash
 while :
 do
-    printf "%s\n" "Running /usr/local/bin/check-updates in an Arch chroot at $(date +"%r %A, %d %B %Y")"
-    ~/.local/bin/check-updates
+    printf "%s\n" "Running /usr/local/bin/check-updates at $(date +"%r %A, %d %B %Y")"
+    /usr/local/bin/check-updates
     if [[ -n "$@" ]]; then
          sleep "$@"
     else
