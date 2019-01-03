@@ -16,7 +16,7 @@ VERSION=$(grep "^VERSION_ID" < /etc/os-release | cut -d '=' -f 2 | cut -d '"' -f
 
 if ! command -v import > /dev/null 2>&1; then
 	if command -v zenity > /dev/null 2>&1; then
-		zenity --error --text="import command not found, please command -v if ImageMagick is installed, if not, install it, otherwise add the import command to your system PATH!" --title="Error!"
+		zenity --error --text="import command not found by running command -v import. If it is installed please add it to system PATH, otherwise please install it with nixi ImageMagick" --title="Error!"
 	fi
 fi
 
