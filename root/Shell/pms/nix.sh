@@ -21,3 +21,8 @@ function nixr {
 function nixs {
     nix search "$@"
 }
+
+function nixrb {
+	nix-channel --update
+	nixos-rebuild boot
+}
