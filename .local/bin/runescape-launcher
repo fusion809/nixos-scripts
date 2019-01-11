@@ -1,2 +1,3 @@
 #!/bin/sh
-flatpak run com.jagex.RuneScape
+#flatpak run com.jagex.RuneScape
+. $HOME/.nix-profile/bin/runescape-launcher
