@@ -1,28 +1,28 @@
 function nixca {
-    nix-channel --add https://nixos.org/channels/$1
+	nix-channel --add https://nixos.org/channels/$1
 }
 
 function nixcr {
-    nix-channel --remove "$@"
+	nix-channel --remove "$@"
 }
 
 function nixup {
-    nix-channel --update && nix-env --upgrade
+	nix-channel --update && nix-env --upgrade
 }
 
 function nixi {
-    nix-env -i "$@"
+	nix-env -i "$@"
 }
 
 function nixr {
-    nix-env -r "$@"
+	nix-env -r "$@"
 }
 
 function nixs {
-    nix search "$@"
+	nix search "$@"
 }
 
 function nixrb {
 	nix-channel --update
-	nixos-rebuild boot
+	nixos-rebuild -I /nix/var/nix/profiles/per-user/root/channels/nixos-unstable boot
 }
