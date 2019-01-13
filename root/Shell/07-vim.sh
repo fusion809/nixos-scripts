@@ -35,3 +35,7 @@ function vvim {
 function vzsh {
 	vim $HOME/.zshrc
 }
+
+function vnc {
+	vim /etc/nixos/configuration.nix
+}

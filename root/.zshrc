@@ -1,4 +1,4 @@
-#!/bin/zsh
+#!/usr/bin/env zsh
 export ZSH=/home/fusion809/.oh-my-zsh
 ZSH_DISABLE_COMPFIX=true
 # Uncomment the following line to use hyphen-insensitive completion. Case
@@ -91,7 +91,7 @@ export PATH=/usr/local/bin:/usr/local/sbin:/bin:/sbin:/usr/sbin:/usr/bin
 # Example aliases
 # alias zshconfig="mate ~/.zshrc"
 # alias ohmyzsh="mate ~/.oh-my-zsh"
-for i in $HOME/Shell/*.sh
+for i in "$HOME"/Shell/*.sh
 do
-  . "$i"
+	. "$i"
 done

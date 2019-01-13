@@ -32,7 +32,7 @@ export PS1='\
  '
 # Put your fun stuff here.
 # Execute all shell scripts in the ~/Shell directory
-for i in $HOME/Shell/*.sh
+for i in "$HOME"/Shell/*.sh
 do
-	. $i
+	. "$i"
 done

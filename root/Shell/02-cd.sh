@@ -1,31 +1,11 @@
 function cdsh {
-    cd $HOME/Shell
-}
-
-function cdu {
-    cd /etc/portage/package.use
-}
-
-function cdm {
-    cd /etc/portage/package.mask
-}
-
-function cdp {
-    cd /etc/portage
-}
-
-function cdpt {
-    cd /usr/portage
-}
-
-function cdsl {
-    cd /usr/src/linux
-}
-
-function cdvl {
-    cd /var/lib/layman
+	cd "$HOME"/Shell || ( printf "%s\n" "It doth appear that $HOME/Shell does not exist, as cd'in into it failed." && return )
 }
 
 function cdb {
-    cd /boot
+	cd "/boot" || ( printf "%s\n" "It appears that /boot doesn't exist, as I cannot seem to cd into it, you may wish to rectify this before rebooting, as this is odd." && return )
+}
+
+function cdnc {
+	cd "/etc/nixos" || ( printf "%s\n" "Are you sure this is NixOS, as /etc/nixos doesn't seem to exist, as cd'in into it failed." && return )
 }
