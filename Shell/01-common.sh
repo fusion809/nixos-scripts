@@ -1,11 +1,5 @@
-if [[ $SHELL == /bin/zsh ]]; then
-    for i in $(dirname "$0")/common-scripts/*.sh
-    do
-         . "$i"
-    done
-else
-    for i in $HOME/Shell/common-scripts/*.sh
-    do
-         . "$i"
-    done
-fi
+PRESENT_DIRECTORY="`dirname \"$0\"`"
+for i in ${PRESENT_DIRECTORY}/common-scripts/*.sh
+do
+     . "$i"
+done
