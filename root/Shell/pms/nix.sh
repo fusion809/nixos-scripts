@@ -24,5 +24,5 @@ function nixs {
 
 function nixrb {
 	nix-channel --update
-	nixos-rebuild -I /nix/var/nix/profiles/per-user/root/channels/nixos-unstable boot
+	nixos-rebuild boot
 }
