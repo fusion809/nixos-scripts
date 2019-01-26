@@ -9,18 +9,18 @@ cd /home/fusion809/GitHub/others/SP-OpenRAModSDK || return
 git stash -q || return
 # update repository
 if command -v git > /dev/null 2>&1; then
-    git pull origin master -q || ( printf "ORASSPrr\n" && return )
+    git pull origin Shattered-Paradise-Master -q || ( printf "ORASSPrr\n" && return )
 else
     printf "git isn't found. Please install it, or if it is installed edit your system PATH." && return
 fi
 
-sdklv=$(git rev-list --branches master --count)
+sdklv=$(git rev-list --branches Shattered-Paradise-Master --count)
 # OpenRA latest packaged version
 sdkpv=$(cat /home/fusion809/OBS/home:fusion809/openra-sp/openra-sp.spec | grep "Version:" | sed 's/Version:\s*//g')
 
 cd /home/fusion809/GitHub/others/Shattered-Paradise
 splc=$(git log | head -n 1 | cut -d ' ' -f 2)
-splver=$(git rev-list --branches master --count)
+splver=$(git rev-list --branches Shattered-Paradise-Master --count)
 sppc=$(cat /home/fusion809/OBS/home:fusion809/openra-sp/openra-sp.spec | grep "define sp_commit" | sed 's/%define sp_commit //g')
 
 if [[ $sdkpv == $sdklv ]] && [[ $splc == $sppc ]]; then
