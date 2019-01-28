@@ -23,6 +23,11 @@ function nixs {
 }
 
 function nixrb {
+	nixos-rebuild switch --upgrade
+}
+
+function nixrbt {
 	nix-channel --update
 	nixos-rebuild boot
 }
+
