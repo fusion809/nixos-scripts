@@ -119,6 +119,6 @@ function launch-game {
 }
 export PATH=$PATH:$SCR/nixos-scripts/usr/local/bin
 
-if [[ "$(df -h / | grep disk | cut -d ' ' -f 12 | sed 's/%//g')" -gt "95" ]]; then
-	printf "Disk usage is critically high."
-fi
+#if [[ "$(df -h / | grep disk | cut -d ' ' -f 12 | sed 's/%//g')" -gt "95" ]]; then
+#	printf "Disk usage is critically high."
+#fi
