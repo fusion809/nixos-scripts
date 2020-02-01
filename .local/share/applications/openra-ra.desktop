@@ -1,0 +1,12 @@
+[Desktop Entry]
+Type=Application
+Version=1.0
+Name=OpenRA - Red Alert
+GenericName=Real Time Strategy Game
+GenericName[de]=Echtzeit-Strategiespiel
+Comment=Reimagining of early Westwood Games
+Icon=openra-ra
+Exec=/home/fusion809/.local/bin/openra-ra %U
+Terminal=false
+Categories=Game;StrategyGame;RTSGame;OpenRA;
+MimeType=x-scheme-handler/openra-ra-git-c2bc313bf0;
