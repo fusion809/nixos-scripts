@@ -125,16 +125,13 @@ export PATH=$PATH:$SCR/nixos-scripts/usr/local/bin
 #
 
 function openraapp {
-	CODE="${1}"
-	APPIMAGENAME="${2}"
-	NAME="${3}"
 	cdns .local/bin
-	cp openra-ra openra-$CODE
-	sed -i -e "s|OpenRA - Red Alert|${APPIMAGENAME}|g" openra-${CODE}
-	ln -sf $PWD/openra-${CODE} ~/.local/bin/
+	cp openra-ra openra-$1
+	sed -i -e "s|OpenRA - Red Alert|${2}|g" openra-${1}
+	ln -sf $PWD/openra-${1} ~/.local/bin/
 	cd ../share/applications
-	cp openra-ra.desktop openra-${CODE}.desktop
-	sed -i -e "s|openra-ra|openra-${CODE}|g" \
-		-e "s|Red Alert|${NAME}|g" openra-${CODE}.desktop
-	ln -sf $PWD/openra-${CODE}.desktop ~/.local/share/applications/
+	cp openra-ra.desktop openra-${1}.desktop
+	sed -i -e "s|openra-ra|openra-${1}|g" \
+		-e "s|Red Alert|${3}|g" openra-${1}.desktop
+	ln -sf $PWD/openra-${1}.desktop ~/.local/share/applications/
 }
