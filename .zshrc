@@ -127,7 +127,7 @@ export PATH=$PATH:$SCR/nixos-scripts/usr/local/bin
 function openraapp {
 	cdns .local/bin
 	cp openra-ra openra-$1
-	sed -i -e "s|OpenRA - Red Alert|${2}|g" openra-${1}
+	sed -i -e "s|OpenRA-Red-Alert|${2}|g" openra-${1}
 	ln -sf $PWD/openra-${1} ~/.local/bin/
 	cd ../share/applications
 	cp openra-ra.desktop openra-${1}.desktop
