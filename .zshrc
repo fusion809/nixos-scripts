@@ -122,3 +122,19 @@ export PATH=$PATH:$SCR/nixos-scripts/usr/local/bin
 #if [[ "$(df -h / | grep disk | cut -d ' ' -f 12 | sed 's/%//g')" -gt "95" ]]; then
 #	printf "Disk usage is critically high."
 #fi
+#
+
+function openraapp {
+	CODE="${1}"
+	APPIMAGENAME="${2}"
+	NAME="${3}"
+	cdns .local/bin
+	cp openra-ra openra-$CODE
+	sed -i -e "s|OpenRA - Red Alert|${APPIMAGENAME}|g" openra-${CODE}
+	ln -sf $PWD/openra-${CODE} ~/.local/bin/
+	cd ../share/applications
+	cp openra-ra.desktop openra-${CODE}.desktop
+	sed -i -e "s|openra-ra|openra-${CODE}|g" \
+		-e "s|Red Alert|${NAME}|g" openra-${CODE}.desktop
+	ln -sf $PWD/openra-${CODE}.desktop ~/.local/share/applications/
+}
