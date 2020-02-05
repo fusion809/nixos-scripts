@@ -1,0 +1,13 @@
+#!/usr/bin/env xdg-open
+[Desktop Entry]
+Type=Application
+Version=1.0
+Name=OpenRA - Combined Arms
+GenericName=Real Time Strategy Game
+GenericName[de]=Echtzeit-Strategiespiel
+Comment=Reimagining of early Westwood Games
+Icon=openra-ca
+Exec=/home/fusion809/.local/bin/openra-ca %U
+Terminal=false
+Categories=Game;StrategyGame;RTSGame;OpenRA;
+MimeType=x-scheme-handler/openra-ca;
