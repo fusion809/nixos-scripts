@@ -31,3 +31,9 @@ function nixrbt {
 	nixos-rebuild boot
 }
 
+function nixc {
+	nix-collect-garbage -d
+	nix-store --optimise
+}
+
+alias clean_up=nixc
