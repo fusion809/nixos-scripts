@@ -29,9 +29,9 @@ if [[ -n "$1" ]]; then
 fi
 
 if [[ -n $VERSION ]]; then
-	mkdir -p "/home/fusion809/Pictures/Screenshots/${XDG_CURRENT_DESKTOP}/${OS}-${VERSION}"
-	import -window root -frame -silent "/home/fusion809/Pictures/Screenshots/${XDG_CURRENT_DESKTOP}/${OS}-${VERSION}/Screenshot_${Y}${m}${D}_${H}${M}${S}.png" || zenity --error --text="Screenshot command:\n<span bgcolor='#CCCCCC'><tt>import -window root -frame -silent \"/home/fusion809/Pictures/Screenshots/${XDG_CURRENT_DESKTOP}/${OS}-${VERSION}/Screenshot_${Y}${m}${D}_${H}${M}${S}.png\"</tt></span>" --width=1000 
+	mkdir -p "/home/fusion809/.Pictures/Screenshots/${XDG_CURRENT_DESKTOP}/${OS}-${VERSION}"
+	import -window root -frame -silent "/home/fusion809/.Pictures/Screenshots/${XDG_CURRENT_DESKTOP}/${OS}-${VERSION}/Screenshot_${Y}${m}${D}_${H}${M}${S}.png" || zenity --error --text="Screenshot command:\n<span bgcolor='#CCCCCC'><tt>import -window root -frame -silent \"/home/fusion809/.Pictures/Screenshots/${XDG_CURRENT_DESKTOP}/${OS}-${VERSION}/Screenshot_${Y}${m}${D}_${H}${M}${S}.png\"</tt></span>" --width=1000 
 else
-	mkdir -p "/home/fusion809/Pictures/Screenshots/${XDG_CURRENT_DESKTOP}/${OS}"
-	import -window root -frame -silent "/home/fusion809/Pictures/Screenshots/${XDG_CURRENT_DESKTOP}/${OS}/Screenshot_${Y}${m}${D}_${H}${M}${S}.png" || zenity --error --text="Screenshot command:\n<span bgcolor='#CCCCCC'><tt>import -window root -frame -silent \"/home/fusion809/Pictures/Screenshots/${XDG_CURRENT_DESKTOP}/${OS}/Screenshot_${Y}${m}${D}_${H}${M}${S}.png\"</tt></span>" --width=1000 
+	mkdir -p "/home/fusion809/.Pictures/Screenshots/${XDG_CURRENT_DESKTOP}/${OS}"
+	import -window root -frame -silent "/home/fusion809/.Pictures/Screenshots/${XDG_CURRENT_DESKTOP}/${OS}/Screenshot_${Y}${m}${D}_${H}${M}${S}.png" || zenity --error --text="Screenshot command:\n<span bgcolor='#CCCCCC'><tt>import -window root -frame -silent \"/home/fusion809/.Pictures/Screenshots/${XDG_CURRENT_DESKTOP}/${OS}/Screenshot_${Y}${m}${D}_${H}${M}${S}.png\"</tt></span>" --width=1000 
 fi
