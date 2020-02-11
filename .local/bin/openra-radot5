@@ -1,0 +1,3 @@
+#!/usr/bin/env bash
+FILE=$(ls ~/Applications/OpenRA | grep "Red Alert 05")
+appimage-run ~/Applications/OpenRA/"${FILE}"

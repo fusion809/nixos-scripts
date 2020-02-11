@@ -1,0 +1,3 @@
+#!/usr/bin/env bash
+FILE=$(ls ~/Applications/OpenRA | grep "ValiantShades-"[0-9])
+appimage-run ~/Applications/OpenRA/"${FILE}"
