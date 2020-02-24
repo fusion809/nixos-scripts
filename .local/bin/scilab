@@ -1,0 +1,3 @@
+#!/usr/bin/env bash
+FILE=$(ls ~/Applications | grep Scilab)
+appimage-run ~/Applications/${FILE}

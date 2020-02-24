@@ -1,0 +1,11 @@
+#!/usr/bin/env xdg-open
+[Desktop Entry]
+Type=Application
+Version=1.0
+Name=Scilab
+GenericName=Free and open-source alternative to MATLAB
+Comment=Free and open-source program for numerical computing
+Icon=scilab
+Exec=/home/fusion809/.local/bin/scilab %U
+Terminal=false
+Categories=Science;Mathematics;
