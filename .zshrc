@@ -135,3 +135,7 @@ function openraapp {
 		-e "s|Red Alert|${3}|g" openra-${1}.desktop
 	ln -sf $PWD/openra-${1}.desktop ~/.local/share/applications/
 }
+
+function audiofix {
+	 pulseaudio -k && sudo alsa force-reload
+}
