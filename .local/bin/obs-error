@@ -1,4 +1,4 @@
-#!/run/current-system/sw/bin/bash
+#!/usr/bin/env bash
 if command -v wget > /dev/null 2>&1; then
 	msg=$(wget -cqO- https://build.opensuse.org/project/show/home:fusion809/ | grep "build error" | cut -d '>' -f 2 | cut -d '<' -f 1)
 	pkgs=$(wget -cqO- "https://build.opensuse.org/project/monitor/home:fusion809?blocked=0&building=0&dispatching=0&finished=0&scheduled=0&signing=0&succeeded=0" | grep "<td" | grep "</td" | grep -v "<a.*></a>" | cut -d '"' -f 6 | sed 's/id-//g' | sed 's|/package/live_build_log/home:fusion809/||g' | sed 's/\// /g' | sed 's/Fe#dora_/F/g' | sed 's/Rawhide/Raw/g' | sed 's/Mageia_/M/g' | sed 's/Cauldron/Cauld/g' | sed 's/Arch_Extra/Arch/g' | sed 's/CentOS_/C/g' | sed 's/Scientific_Linux_/SL/g' | sed 's/openSUSE_Tumbleweed/OT/g' | sed 's/openSUSE_Leap_/OL/g' | sed 's/openSUSE_Factory/OF/g' | sed 's/xUbuntu_/U/g' | sed 's/Debian_//g' | sed 's/SLE_12_SP/S12P/g' | sed 's/SLE_15/S15/g' | sed 's/RHEL_/R/g' | sed 's/Testing/Test/g' | sed 's/x86_64/x86-64/g' | grep -v 'openra-mw' | sed 's/_/ /g' | grep -v "nofollow" | tr '\n' ';' | sed 's/;$//g' | sed 's/;/; /g' | grep -v "Cauld.*586" | grep -v "Raw") 

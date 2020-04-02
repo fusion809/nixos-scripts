@@ -1,2 +1,2 @@
-#!/run/current-system/sw/bin/bash
+#!/usr/bin/env bash
 makepkg --printsrcinfo > .SRCINFO

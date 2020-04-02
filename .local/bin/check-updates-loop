@@ -1,4 +1,4 @@
-#!/run/current-system/sw/bin/bash
+#!/usr/bin/env bash
 while :
 do
     printf "%s\n" "Running /usr/local/bin/check-updates at $(date +"%r %A, %d %B %Y")"

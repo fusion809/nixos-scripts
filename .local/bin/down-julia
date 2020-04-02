@@ -1,4 +1,4 @@
-#!/run/current-system/sw/bin/bash
+#!/usr/bin/env bash
 cdp targz
 if command -v wget > /dev/null 2>&1 ; then
 	URL_STABLE=$(wget -cqO- https://julialang.org/downloads/ | grep "linux-x86_64.tar.gz" | head -n 1 | cut -d '"' -f 4)

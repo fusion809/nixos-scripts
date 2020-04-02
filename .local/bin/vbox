@@ -1,4 +1,4 @@
-#!/run/current-system/sw/bin/bash
+#!/usr/bin/env bash
 if command -v virtualbox > /dev/null 2>&1 ; then
 	virtualbox "$@"
 elif command -v VirtualBox > /dev/null 2>&1 ; then

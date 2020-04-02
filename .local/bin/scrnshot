@@ -1,4 +1,4 @@
-#!/run/current-system/sw/bin/bash
+#!/usr/bin/env bash
 set -e
 function calc {
     TZ="Australia/Brisbane" date +"%$1"

@@ -4,19 +4,19 @@
 #    sleep 60
 #done
 
-# OpenRA Yuri's Revenge latest commit available
-cd /home/fusion809/GitHub/others/yr || return
+# OpenRA Valiant Shades latest commit available
+cd /home/fusion809/GitHub/others/ValiantShades || return
 if ! command -v git > /dev/null 2>&1; then
     printf "git is not detected, either install it or if already installed at it to the system PATH.\n" && return
 fi
 git stash -q || return
-git fetch origin -q && git rebase origin -q || ( printf "ORAYRErr\n" && return )
+git fetch origin -q && git rebase origin -q || ( printf "ORAVSErr\n" && return )
 orlv=$(git rev-list --branches master --count)
 # latest packaged version
-orpv=$(grep "VERSION" < $HOME/.local/share/openra-yr | cut -d ' ' -f 2)
+orpv=$(grep "VERSION" < $HOME/.local/share/openra-vs | cut -d ' ' -f 2)
 
 if [[ $orpv == $orlv ]]; then
-    printf "ORAYR \n"
+    printf "ORAVS \n"
 else
-    printf "ORAYR${orlv}\n"
+    printf "ORAVS${orlv}\n"
 fi

@@ -1,4 +1,4 @@
-#!/run/current-system/sw/bin/bash
+#!/usr/bin/env bash
 if command -v tor-browser > /dev/null 2>&1 ; then
 	tor-browser
 elif [[ -f $HOME/.nix-profile/bin/tor-browser ]]; then

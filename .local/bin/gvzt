@@ -1,4 +1,4 @@
-#!/run/current-system/sw/bin/bash
+#!/usr/bin/env bash
 pushd $HOME/GitHub/mine/scripts/zsh-theme
 gvim
 popd

@@ -1,14 +1,14 @@
-#!/run/current-system/sw/bin/bash
+#!/usr/bin/env bash
 #while ! ping -q -w 1 -c 1 $(ip r | grep default | cut -d ' ' -f 3) > /dev/null
 #do
 #    sleep 60
 #done
 
-# OpenRA RAClassic latest commit available
+# OpenRA Combined Arms latest commit available
 cd /home/fusion809/GitHub/others/CAmod || return
-git stash -q || return
 
 if command -v git > /dev/null 2>&1; then
+    git stash -q || return
     git pull origin master -q || ( printf "ORACAErr\n" && return )
     orlv=$(git rev-list --branches master --count)
 else
@@ -16,10 +16,10 @@ else
 fi
 
 # Latest packaged version
-orpv=$(grep " version = " < $NIXPKGS/pkgs/games/openra-ca/default.nix | cut -d '"' -f 2)
+orpv=$(grep "VERSION" < $HOME/.local/share/openra-ca | cut -d ' ' -f 2)
 
-if [[ $orpv == $orlv ]]; then
-    printf "ORACA \n"
-else
+if ! [[ $orpv == $orlv ]]; then
     printf "ORACA${orlv}\n"
+else
+    printf "ORACA \n"
 fi

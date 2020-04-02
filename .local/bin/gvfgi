@@ -1,4 +1,4 @@
-#!/run/current-system/sw/bin/bash
+#!/usr/bin/env bash
 export DIR=/home/fusion809/GitHub/mine/websites/fusion809.github.io
 pushd $DIR
 /usr/bin/gvim

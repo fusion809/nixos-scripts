@@ -4,19 +4,19 @@
 #    sleep 60
 #done
 
-# OpenRA Red Alert 2 mod latest commit available
-cd /home/fusion809/GitHub/others/ra2 || return
+# OpenRA Sole Survivor mod latest commit available
+cd /home/fusion809/GitHub/others/ss || return
 if ! command -v git > /dev/null 2>&1; then
     printf "%s\n" "git is not detected, please install it and if already installed add it to your system PATH!" && return
 fi
 git stash -q || return
-git pull origin master -q || ( printf "ORA2Err\n" && return )
+git pull origin master -q || ( printf "ORASSErr\n" && return )
 orlv=$(git rev-list --branches master --count)
-# latest packaged version
-orpv=$(grep "VERSION" < $HOME/.local/share/openra-ra2 | cut -d ' ' -f 2)
+# Latest packaged version
+orpv=$(grep "VERSION" < $HOME/.local/share/openra-ss | cut -d ' ' -f 2)
 
 if [[ $orpv == $orlv ]]; then
-    printf "%s\n" "ORA2 "
+    printf "%s\n" "ORASS "
 else
-    printf "%s\n" "ORA2${orlv}"
+    printf "%s\n" "ORASS${orlv}"
 fi

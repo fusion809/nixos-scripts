@@ -1,4 +1,4 @@
-#!/run/current-system/sw/bin/bash
+#!/usr/bin/env bash
 space() {
 	if df -T / | grep -i btrfs > /dev/null 2>&1 ; then
 		USED=$(sudo btrfs fi show | head -n 3 | grep --color=auto --exclude-dir={.bzr,CVS,.git,.hg,.svn} "devid" | cut -d ' ' -f 9 | sed 's/GiB//g')

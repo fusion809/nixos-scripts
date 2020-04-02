@@ -1,10 +1,10 @@
-#!/run/current-system/sw/bin/bash
+#!/usr/bin/env bash
 #while ! ping -q -w 1 -c 1 $(ip r | grep default | cut -d ' ' -f 3) > /dev/null
 #do
 #    sleep 60
 #done
 
-# OpenRA latest version available
+# latest version available
 if command -v curl > /dev/null 2>&1; then
     orlv=$(curl -sL https://github.com/OpenRA/OpenRA/releases | grep "[a-z]*-.*\.tar\.gz" | head -n 1 | cut -d "/" -f 5 | cut -d '-' -f 2 | sed 's/\.tar.*//g')
 elif command -v wget > /dev/null 2>&1; then
@@ -12,7 +12,7 @@ elif command -v wget > /dev/null 2>&1; then
 else
     printf "Neither cURL nor wget are detected, please install them, or if installed add to system PATH.\n" && return 
 fi
-# OpenRA latest packaged version
+# latest packaged version
 orpv=$(cat /home/fusion809/OBS/home:fusion809/openra/openra.spec | grep "Version:" | sed 's/Version:\s*//g')
 
 if [[ $orpv == $orlv ]]; then

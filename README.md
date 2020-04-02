@@ -6,3 +6,6 @@ Run the following to install this repo on your NixOS machine:
 ```bash
 /bin/bash -c "$(wget -cqO- https://git.io/vHgyP)"
 ```
+
+# Note to self
+When a new OpenRA mod checker script is added to .local/bin, a new symlink is necessary between /arch/home/username/.local/share/openra* and ~/.local/share/, as otherwise the script will not know when the package is up to date and will constantly complain that it isn't.
