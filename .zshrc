@@ -136,6 +136,9 @@ function openraapp {
 	ln -sf $PWD/openra-${1}.desktop ~/.local/share/applications/
 }
 
+# Following line is courtesy of ottidmes on #nixos @ Freenode ; it is to be used if audio goes blank for no apparent reason and
+# pulseaudio is listed as failed when running systemctl --user status pulseaudio
 function audiofix {
 	 pulseaudio -k && sudo alsa force-reload
 }
+
