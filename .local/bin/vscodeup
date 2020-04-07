@@ -1,0 +1,12 @@
+#!/usr/bin/env bash
+VSCODE_NIXPKGS_VERSION=$(grep "version =" < $NIXPKGS/pkgs/applications/editors/vscode/default.nix | cut -d '"' -f 2)
+VSCODE_UPSTREAM_VERSION=$(wget -cqO- https://github.com/Microsoft/vscode/releases | grep tar.gz | head -n 1 | cut -d '/' -f 5 | sed 's/\.tar\.gz.*//g')
+
+if ! [[ $VSCODE_NIXPKGS_VERSION == $VSCODE_UPSTREAM_VERSION ]]; then
+	sed -i -e "s|$VSCODE_NIXPKGS_VERSION|$VSCODE_UPSTREAM_VERSION|g" $NIXPKGS/pkgs/applications/editors/vscode/default.nix
+        cd $NIXPKGS/pkgs/applications/editors/vscode/
+	git fetch upstream
+	git merge -s ours upstream/master
+	push "vscode: $VSCODE_NIXPKGS_VERSION->$VSCODE_UPSTREAM_VERSION"
+fi
+
