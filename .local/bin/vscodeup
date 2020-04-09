@@ -7,6 +7,8 @@ if ! [[ $VSCODE_NIXPKGS_VERSION == $VSCODE_UPSTREAM_VERSION ]]; then
         cd $NIXPKGS/pkgs/applications/editors/vscode/
 	git fetch upstream
 	git merge -s ours upstream/master
-	push "vscode: $VSCODE_NIXPKGS_VERSION->$VSCODE_UPSTREAM_VERSION"
+	git add --all
+	git commit -m "vscode: $VSCODE_NIXPKGS_VERSION->$VSCODE_UPSTREAM_VERSION"
+	git push origin master
 fi
 
