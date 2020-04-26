@@ -6,4 +6,4 @@ if ! echo $LEFT | grep [0-9] &> /dev/null ; then
 fi
 TOTAL=$(octave --eval "$USED+$LEFT" | cut -d '=' -f 2 | sed 's/\s*//g' | sed 's/00$//g')
 
-printf "/ ${USED}/${TOTAL}G"
+printf "/ ${LEFT}G left"

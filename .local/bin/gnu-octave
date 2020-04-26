@@ -1,2 +1,2 @@
 #!/usr/bin/env bash
-nix-shell -p python python.pkgs.sympy --command "cd /data/GitHub/mine/math/GNU_Octave ; octave --gui ${@}"
+konsole -e "nix-shell -p python python.pkgs.sympy --command \"cd /data/GitHub/mine/math/GNU_Octave ; octave --gui ${@}\""

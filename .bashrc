@@ -32,7 +32,7 @@ export PS1='\
  '
 
 # Put your fun stuff here.
-for i in $HOME/Shell/*.sh
-do
-    . "$i"
-done
+#for i in $HOME/Shell/*.sh
+#do
+#    . "$i"
+#done
