@@ -1,18 +1,18 @@
 function nixc {
-	nix-collect-garbage -d
-	nix-store --optimise
+	sudo nix-collect-garbage --delete-old
+	sudo nix-store --optimise
 }
 
 alias clean_up=nixc
 
 function nixo {
-	nix-store --optimise
+	sudo nix-store --optimise
 }
 
 alias optimise=nixo
 
 function nixco {
-	nix-collect-garbage -d
+	sudo nix-collect-garbage -d
 }
 
 alias collect_garbage=nixco
@@ -32,3 +32,11 @@ function vscode_nixpkgs_update {
 }
 
 alias vscodeup=vscode_nixpkgs_update
+
+function nixrb {
+	sudo su -c "nixos-rebuild switch --upgrade && nix-collect-garbage --delete-old"
+}
+
+function snixs {
+	sudo su -c "nix search $@"
+}
