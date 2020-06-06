@@ -142,3 +142,4 @@ function audiofix {
 	 pulseaudio -k && sudo alsa force-reload
 }
 
+xhost +
